@@ -1,0 +1,54 @@
+create database college;
+//////////////////////////////
+//////////////////////////////
+////////// crear la tabla admision
+create table NewAdmission(
+NAID int not null	IDENTITY(1,1) primary key,
+fname varchar(250)not null,
+mname varchar(250)not null,
+gender  varchar(10)not null,
+dob  varchar(50)not null,
+mobile bigint not null,
+email  varchar(150)not null,
+semester  varchar(100)not null,
+prog  varchar(150)not null,
+sname  varchar(150)not null,
+duration  varchar(120)not null,
+address  varchar(250)not null
+)
+
+//cambiar el nivel del semestre
+  update [dbo].[NewAdmission] set semester = '3er sem' where  semester= '1er sem'
+//AGREGAR EL COSTO 
+ SELECT  fname,mname, duration FROM [college].[dbo].[NewAdmission] where  NAID = 1
+//////////////////////////////
+//////////////////////////////
+//////////crear la tabla fees
+
+create table Fees(
+fid int not null IDENTITY(1,1) primary key,
+NAID int  not null,
+fees int  not null
+)
+//insertar datos a fees
+
+INSERT INTO [dbo].[Fees] VALUES (1, 100)
+//seleccionar
+SELECT * FROM [dbo].[Fees] where NAID= 1
+//BUSCAR ALUMNO
+select [dbo].[NewAdmission].NAID as Student_Id,[dbo].[NewAdmission].fname as Full_Name, [dbo].[NewAdmission].mname as Mname,[dbo].[NewAdmission].gender as Gender, [dbo].[NewAdmission].dob as Date_of_Birth, [dbo].[NewAdmission].mobile as Mobile, [dbo].[NewAdmission].email as Email,[dbo].[NewAdmission].semester,[dbo].[NewAdmission].prog as Progra,[dbo]. [NewAdmission].sname as School,[dbo].[NewAdmission].duration as Duration, [dbo].[NewAdmission].address as Adreess, [dbo].[Fees].fees as Fees from [dbo].[NewAdmission] inner join [dbo].[Fees] on [dbo].[NewAdmission].NAID = [dbo].[Fees].NAID
+//////////////////////////////
+//////////////////////////////
+//////////crear la tabla profesor
+create table teacher(
+tID int not null	IDENTITY(1,1) primary key,
+fname varchar(250)not null,
+gender  varchar(10)not null,
+dob  varchar(50)not null,
+mobile bigint not null,
+email  varchar(150)not null,
+semester  varchar(100)not null,
+prog  varchar(150)not null,
+yer  varchar(250)not null,
+adr  varchar(250)not null
+)
